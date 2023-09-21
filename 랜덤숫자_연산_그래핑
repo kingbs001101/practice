@@ -1,0 +1,47 @@
+# 그래프를 그리기위한 모듈 인용
+import matplotlib.pyplot as plt
+import numpy as np
+import time
+
+# 데이터 List 생성 & 초기화
+Data1 = []
+Data2 = []
+sum_Data1_Data2= []
+
+# 그래프 창 생성 
+fig, ax = plt.subplots()
+
+# 제목 추가
+ax.set_xlabel('Number of Data')
+ax.set_ylabel('Random Data')
+ax.set_title('Graph of random Data')
+
+
+def graphing() :
+    # 시작시간 입력
+    start_time = time.time()
+
+    # 그래프 실시간 업데이트 
+    while time.time() - start_time <10 :
+
+        # Data1 리스트에 랜덤숫자 할당
+        Data1.append(np.random.randint(0,100))
+
+        # Data2 리스트에 랜덤숫자 할당
+        Data2.append(np.random.randint(0,100))
+
+        # Data1 리스트와 Data2 리스트 합 계산 
+        sum_Data1_Data2 = np.array(Data1) + np.array(Data2)
+
+        # Data1, Data2, sum_Data1_Data2 그래프에 나타내기
+        ax.plot(Data1, color = 'orange')
+        ax.plot(Data2, color = 'red')
+        ax.plot(sum_Data1_Data2, color = 'black')
+        ax.set_xlim(len(Data1) - 30, len(Data1) + 30)
+
+        plt.pause(0.01)
+
+    plt.close()
+
+graphing()
+
